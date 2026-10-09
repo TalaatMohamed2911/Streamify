@@ -1,3 +1,4 @@
+import com.android.build.gradle.LibraryExtension
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 
@@ -24,6 +25,12 @@ subprojects {
             extensions.configure<KotlinAndroidProjectExtension> {
                 jvmToolchain(24)
                 compilerOptions.jvmTarget.set(JvmTarget.JVM_17)
+            }
+            extensions.configure<LibraryExtension> {
+                compileOptions {
+                    sourceCompatibility = JavaVersion.VERSION_17
+                    targetCompatibility = JavaVersion.VERSION_17
+                }
             }
         }
     }
